@@ -93,10 +93,10 @@ async def start_command(client: Client, message: Message):
 
             except:
                 pass
-        k = await client.send_message(chat_id = message.from_user.id, text=f"<b>❗️ <u>IMPORTANT</u> ❗️</b>\n\nThis video / file will be deleted in 10 minutes (Due to copyright issues).\n\n📌 Please forward this video / file to somewhere else and start downloading there.")
+        k = await client.send_message(chat_id = message.from_user.id, text=f"<b>Note</b>\n<b>• Save these files to the your saved messages or to any other private chat, Files in this chat will be automatically deleted after 10 minutes</b>")
         await asyncio.sleep(SECONDS)
         await f.delete()
-        await k.edit_text("Your video / file is successfully deleted !")
+        await k.delete()
 
 
         return
@@ -104,8 +104,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("About Me", callback_data = "about"),
+                    InlineKeyboardButton("Close", callback_data = "close")
                 ]
             ]
         )
@@ -138,15 +138,18 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 async def not_joined(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton(text="Join Channel", url=client.invitelink),
-            InlineKeyboardButton(text="Join Channel", url=client.invitelink2),
-        ]
+            InlineKeyboardButton(text="𝗝𝗼𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝟭", url=client.invitelink),
+            InlineKeyboardButton(text="𝗝𝗼𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝟮", url=client.invitelink2),
+        ],
+        [
+            InlineKeyboardButton(text="𝗦𝗲𝗻𝗱 𝗮 𝗥𝗲𝗾𝘂𝗲𝘀𝘁 𝘁𝗼 𝗕𝗮𝗰𝗸𝘂𝗽 𝗖𝗵𝗮𝗻𝗻𝗲𝗹", url='https://t.me/+pswlM5OFGZtkMmMx'),
+    ],
     ]
     try:
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Try Again',
+                    text = '•• 𝗧𝗿𝘆 𝗔𝗴𝗮𝗶𝗻 ••',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
